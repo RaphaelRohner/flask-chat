@@ -18,7 +18,7 @@ def get_all_messages():
 @app.route('/')
 def index():
     """Main page with instructions"""
-    return "To send a message use /USERNAME/MESSAGE"
+    return "To send a message use: /USERNAME/MESSAGE"
 
 
 @app.route('/<username>')
@@ -31,7 +31,7 @@ def user(username):
 def send_message(username, message):
     """Create a new message and redirect back to the chat page"""
     add_messages(username, message)
-    return redirect(username)
+    return redirect("/" + username)
 
 
 app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
